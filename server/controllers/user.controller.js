@@ -131,39 +131,6 @@ module.exports.follow = async (req, res) => {
   }
 };
 
-/* module.exports.follow = async (req, res, next) => {
-  const { follower, following, action } = req.body;
-  try {
-      switch(action) {
-          case 'follow':
-              await Promise.all([ 
-                  User.findByIdAndUpdate(follower, { $push: { following: following }}),
-                  User.findByIdAndUpdate(following, { $push: { followers: follower }})
-              
-              ]);
-          break;
-
-          case 'unfollow':
-              await Promise.all([ 
-                  User.findByIdAndUpdate(follower, { $pull: { following: following }}),
-                  User.findByIdAndUpdate(following, { $pull: { followers: follower }})
-              
-              ]); 
-          break;
-
-          default:
-              break;
-      }
-
-      res.json({ done: true });
-      
-  } catch(err) {
-      res.json({ done: false });
-  }
-}; */
-
-
-
 module.exports.unfollow = async (req, res) => {
   /* if (!ObjectId.isValid(req.params.id) || !ObjectId.isValid(req.params.idToFollow))
   return res.status(400).send('ID unknown :' + req.params.id) */
@@ -188,78 +155,4 @@ module.exports.unfollow = async (req, res) => {
     return res.status(500).json({ message: err });
   }
 };
-
-/* 
-  module.exports.updatelUser = async (req, res) => {
-  const users = await User.find().select();
-  res.status(200).json(users);
-};
-
-*/
-
-//update crud code
-
-/* const addUser = async (req, res) => {
-  try {
-      let utilisateur = new userSchema(
-          req.body.fullName,
-          req.body.email,
-          req.body.role
-      );
-
-      let result = await client
-      .bd()
-      .collection("user")
-      .insertOne(utilisateur);
-
-      res.status(200).json(result);
-  } catch (error) {
-      console.log(error);
-      res.status(500).json(error);
-  }  
-};
-
-module.exports = { addUser }; */
-
-
-
-/*
-   
-  exports.createUser = async (req, res) => {
-    try {
-      const User = await userCrudService.createUser(req.body);
-      res.json({ data: User, status: "success" });
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  };
-   
-  exports.getUserById = async (req, res) => {
-    try {
-      const User = await userCrudService.getUserById(req.params.id);
-      res.json({ data: User, status: "success" });
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  };
-   
-  exports.updateUser = async (req, res) => {
-    try {
-      const User = await userCrudService.updateUser(req.params.id, req.body);
-      res.json({ data: User, status: "success" });
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  };
-   
-  exports.deleteUser = async (req, res) => {
-    try {
-      const User = await userCrudService.deleteUser(req.params.id);
-      res.json({ data: User, status: "success" });
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  };*/
-
-// end updated crud code
 

@@ -31,28 +31,7 @@ var userSchema = new mongoose.Schema({
     saltSecret: String
 });
 
-// update code 
-/* const User = module.exports = mongoose.model('User', userSchema);
 
-module.exports.getUserById = function(id, callback){
-    User.findById(id, callback);
-}
-
-module.exports.getUserByRole = function(role, callback){
-    const querty = {role: role}
-    User.findOne(query, callback);
-}
-
-module.exports.addUser = function(newUser, callback) {
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUser.password, salt, (err, hash) => {
-      if(err) throw err;
-      newUser.password = hash;
-      newUser.save(callback);
-    });
-  });
-} */
-// end updated code
 
 // Custom validation for email
 userSchema.path('email').validate((val) => {
